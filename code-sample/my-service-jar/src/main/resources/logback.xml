@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="LOGFILE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>LOGFILE %date [%thread] %-5level [CI=%X{correlationId} UUID=%X{UUID}] %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="ASYNCLOGGER" class="ch.qos.logback.classic.AsyncAppender">
+		<queueSize>8192</queueSize>
+		<discardingThreshold>0</discardingThreshold>
+		<appender-ref ref="LOGFILE" />
+	</appender>
+
+    <appender name="PAYLOAD" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>PAYLOAD %date [%thread] %-5level [CI=%X{correlationId} UUID=%X{UUID}] %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="ASYNCPAYLOAD" class="ch.qos.logback.classic.AsyncAppender">
+		<queueSize>8192</queueSize>
+		<discardingThreshold>0</discardingThreshold>
+		<appender-ref ref="PAYLOAD" />
+	</appender>
+	
+	<logger name="PAYLOAD">
+		<appender-ref ref="ASYNCPAYLOAD" />
+	</logger>
+
+	<!-- verbose logging just on our classes -->
+	<logger name="fmeis" level="DEBUG" />
+
+
+	<!-- general log -->
+	<root level="INFO">
+		<appender-ref ref="ASYNCLOGGER" />
+	</root>
+
+</configuration>

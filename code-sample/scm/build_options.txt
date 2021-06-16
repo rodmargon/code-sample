@@ -1,0 +1,38 @@
+buildTech=mvn
+
+buildCmd=mvn compile -Dmaven.test.skip
+testCmd=mvn test
+uploadCmd=mvn deploy -Dmaven.test.skip
+
+# Nexus IQ app name (required).
+nexusIQ=MY_SERVICE
+
+devIntegrationBranch=master
+
+enableSonar=false
+
+artifactExtension=jar
+
+createImage=true
+
+scanImage=false
+
+# fortify options
+# REQUIRED
+#fortifyAppId=134199
+fortifyJiraProject=My-PROJECT-Test
+fortifyUsername=Rodrigo.Martinez
+#fortifySrcLocation=src/
+fortifySrcExclude=scm/,*/test/
+fortifyDevBaseRelease=my-service
+fortifyBugtrackerJob=/APPLICATIONS/fortifyBugtrackerJob
+# OPTIONAL
+enableFortify=false
+
+# enable auto deployments to npe environment
+appDeploy=true
+deployBranchName=master
+
+#Running additional jobs after the CI/CD Pipeline
+#runJobs=true
+#runJobsFromBranch=master

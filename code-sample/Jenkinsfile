@@ -1,0 +1,2 @@
+@Library('jenkinsPipeline')_
+mainPipeline(email: 'rodrigo.martinez@gmail.com)

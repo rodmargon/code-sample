@@ -1,0 +1,9 @@
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+
+spring:
+  application:
+    name: my-service-eureka
+security.signing-key: key

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset xmlns="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" comparisonMethod="maven" xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0 https://mojo.codehaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd">
+    <ignoreVersions>
+        <ignoreVersion type="regex">.*[^\w]+[aA]lpha[^\w]+.*</ignoreVersion>
+        <ignoreVersion type="regex">.*[^\w]+[bB]eta[^\w]+.*</ignoreVersion>
+    </ignoreVersions>
+    <rules>
+        <rule groupId="org.springframework.cloud">
+            <ignoreVersions>
+                <!-- Ignore all versions not ending with ".SRx" and ".RELEASE" -->
+                <ignoreVersion type="regex">^((?!(\.SR\d*$)|(\.RELEASE$)).)*$</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.springframework.boot">
+            <ignoreVersions>
+                <!-- Ignore all versions not ending with ".SRx" and ".RELEASE" -->
+                <ignoreVersion type="regex">^((?!(\.SR\d*$)|(\.RELEASE$)).)*$</ignoreVersion>
+                
+                <!-- ignore Release Candidates -->
+        		<ignoreVersion type="regex">.[^\w]+[Rr][Cc][0-9\W]+.</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+    </rules>
+</ruleset>

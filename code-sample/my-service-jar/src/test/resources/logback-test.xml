@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%date [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+    <!-- specific loggers -->
+	<logger name="org.apache.kafka" level="ERROR"/>
+	<logger name="org.springframework" level="INFO"/>
+	<logger name="com.netflix" level="INFO"/>
+	<logger name="org.apache.commons.beanutils" level="INFO"/>
+	<logger name="com.myorganization" level="INFO" />
+	<logger name="es.myorganization.com" level="WARN" />
+
+
+	<!-- specific loggers in test classpath -->
+	<logger name="com.openpojo" level="ERROR" />
+
+</configuration>
